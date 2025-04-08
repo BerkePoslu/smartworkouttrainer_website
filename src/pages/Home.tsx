@@ -3,10 +3,11 @@ import { Box, Typography, Button, Container } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-// Import your screenshots
+// Import your screenshots and icon
 import screenshot1 from "../assets/images/Screenshot 2025-04-08 at 13.33.40.png";
 import screenshot2 from "../assets/images/Screenshot 2025-04-08 at 13.57.05.png";
 import screenshot3 from "../assets/images/Screenshot 2025-04-08 at 13.57.18.png";
+import appIcon from "../assets/images/smart-workout-icon.png";
 
 const screenshots = [screenshot1, screenshot2, screenshot3];
 
@@ -39,6 +40,18 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          <Box
+            component="img"
+            src={appIcon}
+            alt="Smart Workout App"
+            sx={{
+              width: 120,
+              height: 120,
+              mb: 3,
+              borderRadius: "24px",
+              boxShadow: "0 4px 20px rgba(0, 168, 255, 0.3)",
+            }}
+          />
           <Typography
             variant="h1"
             component="h1"
@@ -147,9 +160,9 @@ const Home = () => {
               lineHeight: 1.8,
             }}
           >
-            SmartWorkoutTrainer revolutionizes fitness with personalized workouts,
-            real-time Stepcounter, and adaptive training plans that help your
-            progress.
+            SmartWorkoutTrainer revolutionizes fitness with personalized
+            workouts, real-time Stepcounter, and adaptive training plans that
+            help your progress.
           </Typography>
 
           <Box sx={{ textAlign: "center" }}>
