@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, Container } from "@mui/material";
+import { Box, Typography, Button, Container, Paper } from "@mui/material";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import DownloadIcon from "@mui/icons-material/Download";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import StorageIcon from "@mui/icons-material/Storage";
+import MemoryIcon from "@mui/icons-material/Memory";
 
 // Import your screenshots and icon
 import screenshot1 from "../assets/images/Screenshot 2025-04-08 at 13.33.40.png";
@@ -13,7 +17,6 @@ const screenshots = [screenshot1, screenshot2, screenshot3];
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,6 +25,12 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  const handleDownload = () => {
+    // Using the correct path from public directory
+    const apkUrl = "/SmartWorkoutApp.apk";
+    window.location.href = apkUrl;
+  };
 
   return (
     <Container maxWidth="lg">
@@ -144,49 +153,180 @@ const Home = () => {
           </Button>
         </Box>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 4,
+            mb: 8,
+            justifyContent: "center",
+          }}
         >
-          <Typography
-            variant="body1"
+          <Paper
             sx={{
-              textAlign: "center",
-              maxWidth: "800px",
-              mx: "auto",
-              mb: 4,
-              fontSize: "1.2rem",
-              lineHeight: 1.8,
+              flex: "1 1 300px",
+              maxWidth: "400px",
+              p: 4,
+              background: "rgba(255, 255, 255, 0.05)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              borderRadius: "16px",
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "translateY(-8px)",
+              },
             }}
           >
-            SmartWorkoutTrainer revolutionizes fitness with personalized
-            workouts, real-time Stepcounter, and adaptive training plans that
-            help your progress.
-          </Typography>
+            <Box sx={{ textAlign: "center", mb: 3 }}>
+              <PhoneAndroidIcon sx={{ fontSize: 48, color: "primary.main" }} />
+            </Box>
+            <Typography variant="h6" sx={{ mb: 2, textAlign: "center" }}>
+              Android 8.0+
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ textAlign: "center" }}
+            >
+              Compatible with modern Android devices
+            </Typography>
+          </Paper>
+          <Paper
+            sx={{
+              flex: "1 1 300px",
+              maxWidth: "400px",
+              p: 4,
+              background: "rgba(255, 255, 255, 0.05)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              borderRadius: "16px",
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "translateY(-8px)",
+              },
+            }}
+          >
+            <Box sx={{ textAlign: "center", mb: 3 }}>
+              <MemoryIcon sx={{ fontSize: 48, color: "primary.main" }} />
+            </Box>
+            <Typography variant="h6" sx={{ mb: 2, textAlign: "center" }}>
+              2GB RAM
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ textAlign: "center" }}
+            >
+              Minimum memory requirement
+            </Typography>
+          </Paper>
+          <Paper
+            sx={{
+              flex: "1 1 300px",
+              maxWidth: "400px",
+              p: 4,
+              background: "rgba(255, 255, 255, 0.05)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              borderRadius: "16px",
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "translateY(-8px)",
+              },
+            }}
+          >
+            <Box sx={{ textAlign: "center", mb: 3 }}>
+              <StorageIcon sx={{ fontSize: 48, color: "primary.main" }} />
+            </Box>
+            <Typography variant="h6" sx={{ mb: 2, textAlign: "center" }}>
+              100MB Storage
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ textAlign: "center" }}
+            >
+              Free space required
+            </Typography>
+          </Paper>
+        </Box>
 
-          <Box sx={{ textAlign: "center" }}>
+        <Paper
+          sx={{
+            p: 6,
+            maxWidth: "800px",
+            mx: "auto",
+            background: "rgba(255, 255, 255, 0.05)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            borderRadius: "24px",
+          }}
+        >
+          <Box sx={{ textAlign: "center", mb: 6 }}>
             <Button
               variant="contained"
               size="large"
-              onClick={() => navigate("/download")}
+              startIcon={<DownloadIcon />}
+              onClick={handleDownload}
               sx={{
-                px: 4,
+                px: 6,
                 py: 2,
                 fontSize: "1.2rem",
                 borderRadius: "30px",
                 textTransform: "uppercase",
                 background: "linear-gradient(45deg, #00a8ff 30%, #0097e6 90%)",
+                boxShadow: "0 4px 15px rgba(0, 168, 255, 0.3)",
                 "&:hover": {
                   background:
                     "linear-gradient(45deg, #0097e6 30%, #00a8ff 90%)",
+                  boxShadow: "0 6px 20px rgba(0, 168, 255, 0.4)",
+                  transform: "translateY(-2px)",
                 },
+                transition: "all 0.3s ease",
               }}
             >
-              Download Now
+              Download APK
             </Button>
           </Box>
-        </motion.div>
+
+          <Box sx={{ textAlign: "center" }}>
+            <Typography
+              variant="body1"
+              sx={{
+                mb: 3,
+                color: "text.secondary",
+                maxWidth: "500px",
+                mx: "auto",
+              }}
+            >
+              Want to explore the source code or contribute to the project?
+            </Typography>
+            <Button
+              variant="outlined"
+              size="large"
+              startIcon={<GitHubIcon />}
+              href="https://github.com/BerkePoslu/workout_flutter_app/tree/main/workout_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                px: 4,
+                py: 1.5,
+                borderRadius: "30px",
+                borderWidth: "2px",
+                color: "primary.main",
+                borderColor: "primary.main",
+                "&:hover": {
+                  borderColor: "primary.dark",
+                  backgroundColor: "rgba(0, 168, 255, 0.04)",
+                  transform: "translateY(-2px)",
+                },
+                transition: "all 0.3s ease",
+              }}
+            >
+              View on GitHub
+            </Button>
+          </Box>
+        </Paper>
       </Box>
     </Container>
   );

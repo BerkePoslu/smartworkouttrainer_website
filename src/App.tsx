@@ -6,8 +6,6 @@ import { Box } from "@mui/material";
 
 // Pages
 import Home from "./pages/Home";
-import Download from "./pages/Download";
-
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -58,7 +56,6 @@ function App() {
           <Box component="main" sx={{ flexGrow: 1 }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/download" element={<Download />} />
             </Routes>
           </Box>
           <Footer />
